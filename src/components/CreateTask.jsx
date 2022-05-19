@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import '../styles/CreateTask.css';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import Fab from '@mui/material/Fab';
@@ -27,7 +27,7 @@ function CreateTask(props) {
                         }} />
                     </Fab>
                 </div>
-                <Form onAdd={props.onAdd} selectedTask={props.selectedTask} onUpdate={props.onUpdate} style={{ zIndex: 1 }} />
+                <Form onAdd={props.onAdd} closeWindow={props.handleToggleAddTask} selectedTask={props.selectedTask} onUpdate={props.onUpdate} tasks={props.tasks} style={{ zIndex: 1 }} />
             </div> : <div>
                 <Fab onClick={props.handleToggleAddTask} style={{
                     margin: "0px",

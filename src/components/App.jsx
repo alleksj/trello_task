@@ -24,7 +24,7 @@ function App() {
         }
     }
 
-    // I clicked on edit task and I want to open a dialog with these values
+    // Click on edit task and open a dialog with these values
     function onEditTask(id) {
         setSelectedTask(tasks.find(task => task.id === id));
         setIsCreateVisible(true);
@@ -45,7 +45,7 @@ function App() {
             <div className="columns">
                 <Tasks tasks={tasks} editTask={onEditTask} />
             </div>
-            <CreateTask onAdd={addTask} onUpdate={onUpdate} selectedTask={selectedTask} showDialog={isCreateVisible} handleToggleAddTask={handleToggleAddTask} />
+            <CreateTask tasks={tasks} onAdd={addTask} onUpdate={onUpdate} selectedTask={selectedTask} showDialog={isCreateVisible} handleToggleAddTask={handleToggleAddTask} />
         </div>
     );
 }

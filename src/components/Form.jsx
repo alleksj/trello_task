@@ -4,10 +4,10 @@ import Zoom from '@mui/material/Zoom';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import Fab from '@mui/material/Fab';
 
-function Form({ onAdd, onUpdate, selectedTask }) {
+function Form({ onAdd, onUpdate, selectedTask, tasks, closeWindow }) {
     console.log(selectedTask)
     const [task, setTask] = useState({
-        idNum: selectedTask ? selectedTask.idNum : "1",
+        idNum: selectedTask ? selectedTask.idNum : tasks.length + 1,
         title: selectedTask ? selectedTask.title : "",
         description: selectedTask ? selectedTask.description : "",
         status: selectedTask ? selectedTask.status : "To Do",
@@ -42,6 +42,7 @@ function Form({ onAdd, onUpdate, selectedTask }) {
         } else {
             onAdd(task);
         }
+        closeWindow();
         resetState();
     }
 
@@ -65,6 +66,7 @@ function Form({ onAdd, onUpdate, selectedTask }) {
                     <option value="CD">CD</option>
                     <option value="EF">EF</option>
                 </select>
+
                 <Zoom in={true}>
                     <Fab onClick={submitTask} style={{
                         position: "absolute",
