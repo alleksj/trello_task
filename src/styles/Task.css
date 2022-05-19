@@ -1,0 +1,24 @@
+.task {
+    background: #fff;
+    border-radius: 7px;
+    box-shadow: 0 2px 5px #ccc;
+    padding: 10px;
+    width: 100%;
+    margin: 16px auto;
+    float: left;
+    cursor: pointer;
+}
+
+.task h1 {
+    font-size: 1.2em;
+    margin-bottom: 6px;
+    color: #2b2d42;
+}
+
+.task p {
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: #2b2d42;
+}

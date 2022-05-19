@@ -1,0 +1,15 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-family: "Montserrat", sans-serif;
+}
+
+body {
+    background: #e0dedd;
+    background-image: url("https://www.transparenttextures.com/patterns/diamond-upholstery.png");
+    padding: 0 16px;
+}

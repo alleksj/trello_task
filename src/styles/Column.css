@@ -1,0 +1,20 @@
+.col {
+    min-height: 500px;
+    max-width: 300px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+    margin: 20px;
+    padding: 20px;
+    background-color: #F9F8F7;
+    border-radius: 5px;
+}
+
+p {
+    font-family: "Montserrat", sans-serif;
+    color: #23283D;
+}
+
+hr.solid {
+    border-top: 1.5px solid #D76F62;
+}
