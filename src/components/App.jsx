@@ -13,6 +13,9 @@ function App() {
 
     function handleToggleAddTask() {
         setIsCreateVisible(!isCreateVisible);
+        if (selectedTask) {
+            setSelectedTask(null);
+        }
     }
 
     function addTask(task) {
@@ -26,19 +29,32 @@ function App() {
 
     // Click on edit task and open a dialog with these values
     function onEditTask(id) {
-        setSelectedTask(tasks.find(task => task.id === id));
+        setSelectedTask(tasks.find(task => task.idNum === id));
         setIsCreateVisible(true);
     }
 
     function onUpdate(task) {
         setTasks(prevTasks => {
-            return [...prevTasks.map(t => t.id !== task.id ? t : task)];
+            // This is how it was originally
+            // return [...prevTasks.map(t => t.id !== task.id ? t : task)];
+            console.log(prevTasks);
+
+            const newTasks = [];
+
+            prevTasks.forEach(t => {
+                if (t.idNum === task.idNum) {
+                    newTasks.push({ ...task })
+                } else {
+                    newTasks.push({ ...t });
+                }
+            })
+            return newTasks;
         });
+
         if (selectedTask) {
             setSelectedTask(null);
         }
     }
-
     return (
         <div>
             <Header />

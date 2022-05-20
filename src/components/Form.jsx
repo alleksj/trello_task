@@ -3,19 +3,11 @@ import '../styles/Form.css';
 import Zoom from '@mui/material/Zoom';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import Fab from '@mui/material/Fab';
+import { getTask } from "../utils/task-factory";
 
 function Form({ onAdd, onUpdate, selectedTask, tasks, closeWindow }) {
-    console.log(selectedTask)
-    const [task, setTask] = useState({
-        idNum: selectedTask ? selectedTask.idNum : tasks.length + 1,
-        title: selectedTask ? selectedTask.title : "",
-        description: selectedTask ? selectedTask.description : "",
-        status: selectedTask ? selectedTask.status : "To Do",
-        user: selectedTask ? selectedTask.user : "Unassigned"
-    });
-
+    const [task, setTask] = useState(getMyTask(selectedTask));
     function handleChange(event) {
-        console.log(event)
         const { name, value } = event.target;
 
         setTask((prevValue) => {
@@ -26,13 +18,18 @@ function Form({ onAdd, onUpdate, selectedTask, tasks, closeWindow }) {
         })
     }
 
+    function getMyTask(selectedTask) {
+        console.log(selectedTask)
+        if (selectedTask) {
+            return Object.assign(getTask(), selectedTask)
+        }
+        const newTask = getTask();
+        newTask.idNum = tasks.length + 1;
+        return newTask;
+    };
+
     function resetState() {
-        setTask({
-            title: "",
-            description: "",
-            status: "To Do",
-            user: "Unassigned"
-        })
+        setTask(getTask());
     }
 
     function submitTask(event) {
@@ -51,7 +48,12 @@ function Form({ onAdd, onUpdate, selectedTask, tasks, closeWindow }) {
             <form className="create-task" >
                 <h2>Task {task.idNum}</h2>
                 <input name="title" onChange={handleChange} placeholder="Title" value={task.title} />
-                <textarea name="description" onChange={handleChange} placeholder="Task description..." rows="3" value={task.description} />
+                <textarea
+                    name="description"
+                    onChange={handleChange}
+                    placeholder="Task description..."
+                    rows="3"
+                    value={task.description} />
 
                 <label>Status: </label>
                 <select id="status" name="status" onChange={handleChange} value={task.status}>
