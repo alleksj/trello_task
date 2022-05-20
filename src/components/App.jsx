@@ -5,12 +5,14 @@ import CreateTask from './CreateTask';
 import Tasks from './Tasks';
 
 function App() {
+    // States
     const [tasks, setTasks] = useState([]);
     const [isCreateVisible, setIsCreateVisible] = useState(false);
     const [selectedTask, setSelectedTask] = useState(null);
 
     // Functions
 
+    // Displays the create/edit window
     function handleToggleAddTask() {
         setIsCreateVisible(!isCreateVisible);
         if (selectedTask) {
@@ -18,6 +20,7 @@ function App() {
         }
     }
 
+    // Function for the small plus button - Either adds a new task to the list or if we click on it updates the existing task
     function addTask(task) {
         setTasks(prevTasks => {
             return [...prevTasks, task];
@@ -27,18 +30,15 @@ function App() {
         }
     }
 
-    // Click on edit task and open a dialog with these values
+    // When we click on an existing task, it opens its data in the create window so it can be edited
     function onEditTask(id) {
         setSelectedTask(tasks.find(task => task.idNum === id));
         setIsCreateVisible(true);
     }
 
+    // Checks if we edited some info on a task and if it needs to change task's data and position
     function onUpdate(task) {
         setTasks(prevTasks => {
-            // This is how it was originally
-            // return [...prevTasks.map(t => t.id !== task.id ? t : task)];
-            console.log(prevTasks);
-
             const newTasks = [];
 
             prevTasks.forEach(t => {
@@ -55,6 +55,8 @@ function App() {
             setSelectedTask(null);
         }
     }
+
+
     return (
         <div>
             <Header />

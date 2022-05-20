@@ -1,3 +1,4 @@
+// Template for task state
 export function getTask() {
     return {
         idNum: 0,

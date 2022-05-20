@@ -27,7 +27,12 @@ function CreateTask(props) {
                         }} />
                     </Fab>
                 </div>
-                <Form onAdd={props.onAdd} closeWindow={props.handleToggleAddTask} selectedTask={props.selectedTask} onUpdate={props.onUpdate} tasks={props.tasks} style={{ zIndex: 1 }} />
+                <Form onAdd={props.onAdd}
+                    closeWindow={props.handleToggleAddTask}
+                    selectedTask={props.selectedTask}
+                    onUpdate={props.onUpdate}
+                    tasks={props.tasks}
+                    style={{ zIndex: 1 }} />
             </div> : <div>
                 <Fab onClick={props.handleToggleAddTask} style={{
                     margin: "0px",

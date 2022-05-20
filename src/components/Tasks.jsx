@@ -2,6 +2,8 @@ import React from 'react';
 import Column from './Column';
 
 function Tasks({ tasks, editTask }) {
+
+    // Sorts the list of tasks according to their status into corresponding columns
     const done = tasks.filter(task => task.status === 'Done');
     const toDo = tasks.filter(task => task.status === 'To Do');
     const inProgress = tasks.filter(task => task.status === 'In progress');

@@ -6,7 +6,12 @@ import Fab from '@mui/material/Fab';
 import { getTask } from "../utils/task-factory";
 
 function Form({ onAdd, onUpdate, selectedTask, tasks, closeWindow }) {
+    // States
     const [task, setTask] = useState(getMyTask(selectedTask));
+
+    // Functions
+
+    // Updates what is stored as task's data while the user is typing
     function handleChange(event) {
         const { name, value } = event.target;
 
@@ -18,6 +23,8 @@ function Form({ onAdd, onUpdate, selectedTask, tasks, closeWindow }) {
         })
     }
 
+    // When opening the create window, either populate the create form with existing task's data or create a 
+    // new one (set new id and clear the rest of the form)
     function getMyTask(selectedTask) {
         console.log(selectedTask)
         if (selectedTask) {
@@ -28,10 +35,12 @@ function Form({ onAdd, onUpdate, selectedTask, tasks, closeWindow }) {
         return newTask;
     };
 
+    // Resets state, so that when we submit a new form, and click on plus to open the form again, the values are cleared
     function resetState() {
         setTask(getTask());
     }
 
+    // Submits new task or updates and resets state
     function submitTask(event) {
         event.preventDefault();
         if (selectedTask) {
